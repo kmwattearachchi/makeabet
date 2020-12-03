@@ -1,0 +1,473 @@
+{
+	"info": {
+		"_postman_id": "ab87dc13-ce89-484f-b309-1d8ca7edd735",
+		"name": "Make A Bet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Success Request - Create Bet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"200\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validation - Required",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Min Stake Amt validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"0.1\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Max Stake Amt validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"100001\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stake amt - max decemals validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.222\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Minimum number of selections - validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.22\",\n    \"selections\": [\n    \n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Maximum number of selections - validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.22\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 3,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 4,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 5,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 6,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 7,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 8,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 9,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 10,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 11,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 12,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 13,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 14,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 15,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 16,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 17,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 18,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 19,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 20,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 21,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Minimum odds - validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.22\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"0.1\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Maximum odds - validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.22\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"10001\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Odds  - max decimal validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.22\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"1000\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.0014\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Duplicate selection found - validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.22\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Maximum win amount - validation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1000.22\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"10000\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insufficiant balance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"player_id\": \"4\",\n    \"stake_amount\": \"1500\",\n    \"selections\": [\n        {\n            \"id\": 1,\n            \"odds\": \"2.001\"\n        },\n        {\n            \"id\": 2,\n            \"odds\": \"2.001\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}api/{{API_VERSION}}/bet",
+					"host": [
+						"{{HOST}}api"
+					],
+					"path": [
+						"{{API_VERSION}}",
+						"bet"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ac55201d-b68e-4960-84e6-5e1630449a58",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8e8f0315-5f2e-4385-a5d8-04434918803d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "a5221b47-346a-4527-a395-a76f596af3b0",
+			"key": "HOST",
+			"value": "http://localhost:8080/"
+		},
+		{
+			"id": "1a9efb9e-d3ca-4b6b-b6be-f0cfea09e9d4",
+			"key": "API_VERSION",
+			"value": "v1"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
